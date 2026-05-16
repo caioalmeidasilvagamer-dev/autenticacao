@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="card-autenticacao">
+        <p class="nome-sistema">Sistema</p>
+        <h1 class="titulo-card">Entrar</h1>
+        <p class="subtitulo-card">Acesse sua conta para continuar.</p>
+
+        {% if erro %}
+            <div class="mensagem-erro">{{ erro }}</div>
+        {% endif %}
+
+        <form method="POST" action="/login">
+            <div class="grupo-campo">
+                <label class="rotulo-campo">Email</label>
+                <div class="wrapper-campo">
+                    <input class="campo-input" type="email" name="email" placeholder="seu@email.com">
+                </div>
+            </div>
+
+            <div class="grupo-campo">
+                <label class="rotulo-campo">Senha</label>
+                <div class="wrapper-campo">
+                    <input class="campo-input campo-senha-input" type="password" name="senha" id="campo-senha" placeholder="••••••••">
+                    <button class="botao-olhinho" type="button" onclick="alternarSenha()" aria-label="Mostrar senha">
+                        <i class="ti ti-eye" id="icone-olho"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button class="botao-enviar" type="submit">Entrar</button>
+        </form>
+
+        <div class="divisor">ou</div>
+        <a class="link-pagina" href="/cadastro">Não tem conta? Cadastrar</a>
+    </div>
+
+    <script>
+    function alternarSenha() {
+        const campo = document.getElementById('campo-senha')
+        const icone = document.getElementById('icone-olho')
+        if (campo.type === 'password') {
+            campo.type = 'text'
+            icone.className = 'ti ti-eye-off'
+        } else {
+            campo.type = 'password'
+            icone.className = 'ti ti-eye'
+        }
+    }
+    </script>
+</body>
+</html>

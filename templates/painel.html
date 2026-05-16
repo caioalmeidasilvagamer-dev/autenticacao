@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="card-autenticacao">
+        <p class="nome-sistema">Sistema</p>
+        <h1 class="titulo-card">Painel</h1>
+        <p class="subtitulo-card">Você está logado.</p>
+
+        <p class="info-usuario">Nome: <span class="destaque">{{ nome }}</span></p>
+        <p class="info-usuario">Cargo: <span class="destaque">{{ cargo }}</span></p>
+
+        <div class="divisor"></div>
+        <a class="link-pagina" href="/logout">Sair da conta</a>
+    </div>
+</body>
+</html>
